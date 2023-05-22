@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 出现，消失，渐变出现，渐变消失，往下滑动出来，往上滑动消失 -->
+    <button id="btn-box1">show</button>
+    <button id="btn-box2">hide</button>
+    <button id="btn-box3">fadeIn</button>
+    <button id="btn-box4">fadeOut</button>
+    <button id="btn-box5">slideDown</button>
+    <button id="btn-box6">slideUp</button>
+    <button id="action">回调</button>
+    <div class="container">
+        <img class="box" src="./展示图片.jpg" width="89%">
+    </div>
+</body>
+<script>
+    $('#btn-box1').on('click', function () {
+        $('.container .box').show(900, 'linear', function () {
+            alert('我出来了')
+        })
+    })
+    $('#btn-box2').on('click', function () {
+        $('.container .box').hide(900, function () {
+            alert('我消失了')
+        })
+    })
+    $('#btn-box3').on('click', function () {
+        $('.container .box').fadeIn(900)
+    })
+    $('#btn-box4').on('click', function () {
+        $('.container .box').fadeOut(900)
+    })
+    $('#btn-box5').on('click', function () {
+        $('.container .box').slideDown(900)
+    })
+    $('#btn-box6').on('click', function () {
+        $('.container .box').slideUp(900)
+    })
+
+    //下面是回调，演示动画效果
+    $('#action').on('click', function () {
+        var $box = $('.box')
+        // $box.hide(9000, function () {
+        //     $box.show(9000, function () {
+        //         $box.fadeOut('slow', function () {
+        //             $box.fadeIn('slow', function () {
+        //                 $box.slideUp(function () {
+        //                     $box.slideDown()
+        //                 })
+        //             })
+        //         })
+        //     })
+        // })
+        $box.hide(1000).show(1000).fadeOut().fadeIn().slideUp().slideDown()
+    })
+</script>
+
+</html>

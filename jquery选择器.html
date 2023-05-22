@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="header">
+        <div class="container">
+            <div class="child">1 hello</div>
+            <div class="child">2 hello</div>
+            <div class="child">3</div>
+            <div class="child">4</div>
+            <p class="ok">ok</p>
+        </div>
+
+        <div class="container">
+            <div class="child">1</div>
+            <div class="child">2</div>
+            <div class="child">3</div>
+            <div class="child">4</div>
+            <p class="ok">ok</p>
+        </div>
+    </div>
+
+
+    <script>
+        $('#header .child').eq(2).addClass('select')      //选中class为child下标为2的元素 添加一个class
+        $('#header .child').eq(2).removeClass('select')   //选中class为child下标为2的元素 删除个class
+
+
+        $('#header .child').eq(0).next('.childe')         //next()选中他下面的第一个邻居
+        $('#header .child').eq(0).nextAll('div')          //nextAll()选中他下面的所有的领居
+        $('#header .child').eq(0).prev('.childe')         //prev（）选中他上面的第一个领居
+        $('#header .child').eq(0).prevAll('.childe')      //prevAll（）选中他上面的所有领居
+
+        $('#header .ok').siblings('div')                  //siblings选中他上下所有的邻居
+
+        $('.ok').parent()                                 //parent（）获取它的父元素
+        $('.ok').parent('.container')                     //获取他的class为container的父元素
+        $('.ok').parents()                                //parents（）获取它的所有祖先元素
+        $('.ok').parents('#header')                       //获取他所有组选里面id为header的元素
+        $('#header .container').eq(0).children()          //获取第一个class为container的里面的所有直接子元素
+        $('#header .container').eq(0).children('.ok')     //获取第一个class为container的里面class为ok的直接子元素
+        $('#header .container').eq(0).find('.ok')         //获取第一个class为container的里面class为ok的直接子元素  必须要加上选择条件
+
+        $('.container').first()                           //获取第一个class为container的元素
+        $('.container').last()                            //获取最后一个class为container的元素
+
+        $('.child').filter(function (index, node) {
+            return node.innerText.search('hello') > -1
+        })                                                //.filter（function（index，node）） 选择文本内容里面包含某个内容的对象
+
+        $('.container').children().not('.ok')             //not()选中class为container下面除了class为ok的直接子元素
+
+        $('.container').is('.ok')                         //is（） 判断是不是
+        $('.container').has('.ok')                        //has()看看有没有
+
+
+    </script>
+</body>
+
+</html>

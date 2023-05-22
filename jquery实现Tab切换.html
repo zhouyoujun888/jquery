@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Tab切换</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .mod-tab {
+            margin-top: 30px;
+        }
+
+        /* .mod-tab .header {} */
+
+        .mod-tab .header::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .mod-tab .header .tab {
+            float: left;
+            border-left: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            background: #ddd;
+            padding: 5px 20px;
+            cursor: pointer;
+        }
+
+        .mod-tab .header .tab.active {
+            background: #fff;
+        }
+
+        .mod-tab .header .tab:last-child {
+            border-right: 1px solid #ccc;
+        }
+
+        .mod-tab .content {
+            border: 1px solid #ccc;
+            width: 325px;
+            height: 200px;
+            background: #fff;
+        }
+
+        .mod-tab .panel {
+            padding-top: 80px;
+            background: #fff;
+            display: none;
+        }
+
+        .mod-tab .panel.active {
+            display: block;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        .mod-tab .header .tab {
+            background-color: pink;
+        }
+
+        .mod-tab .content .panel {
+            font-size: 32px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mod-tab">
+        <div class="header">
+            <div class="tab active">姓名</div>
+            <div class="tab">性别</div>
+            <div class="tab">出生年月</div>
+            <div class="tab">相貌</div>
+        </div>
+        <div class="content">
+            <div class="panel active">周宥均</div>
+            <div class="panel">男</div>
+            <div class="panel">1997年1月</div>
+            <div class="panel">帅气</div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="mod-tab">
+        <div class="header">
+            <div class="tab active">姓名</div>
+            <div class="tab">性别</div>
+            <div class="tab">出生年月</div>
+            <div class="tab">相貌</div>
+        </div>
+        <div class="content">
+            <div class="panel active">袁玲</div>
+            <div class="panel">女</div>
+            <div class="panel">1996年1月</div>
+            <div class="panel">漂亮</div>
+        </div>
+
+        <script>
+            $('.mod-tab .tab').on('click', function () {
+                $(this).addClass('active').siblings().removeClass('active')
+                $(this).parents('.mod-tab').find('.panel').eq($(this).index()).addClass('active').siblings().removeClass('active')
+            })
+        </script>
+</body>
+
+</html>

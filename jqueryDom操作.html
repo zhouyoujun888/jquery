@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+    <script>
+        //一、创建
+        //1.创建一个元素。     只需要把DOM字符串传入$方法即可返回一个jQuery对象
+        var obk = $('<div class="text"><p>hello</p></div>')
+        $('body').append($(obk))
+        $('body').append($('<div class="one"><p>word</p></div>'))
+
+        //二、添加元素
+        //2.  .append()      可以添加任何东西（对象，字符串等等）
+        $('body').append($('<div class="append"><p>添加元素</p></div>'))
+        //3.  .appendTo()     把对象插入到目标元素尾部，目标元素可以是selector, DOM对象, HTML string, 元素集合, jQuery对象
+        $("<p>Test</p>").appendTo("body")
+        //4.  .prepend()      向对象头部追加内容，用法和append类似，内容添加到最开始
+        $("body").prepend("<p>Test2</p>")
+        //5.  .prependTo()    把对象插入到目标元素头部，用法和prepend类似
+        $("<p>Test3</p>").prependTo("body")
+        //6.  .before()       在对象前面,相当于领居(不是头部，而是外面，和对象并列同级)插入内容，参数和append类似  （对象在上面）
+        //'body'的前面是<style>p{color:red;}</style>
+        $('body').before('<style>p{color:red;}</style>')
+        //7.  .insertBefore() 在对象后面 ，和before相反
+        //"h2"的后面是.container
+        $("h2").insertBefore(".container")
+
+        //三、删除元素
+        //    1.  .remove()       删除被选中的元素
+        //    $('body').remove();
+
+        //    2.  .empty()        清空被选中元素的所有子元素
+        //    $("body").empty()
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

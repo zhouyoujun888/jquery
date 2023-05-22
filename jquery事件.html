@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <input id="ipt" type="text">
+    <button id="btn">添加</button>
+    <div id="wrap">
+
+    </div>
+
+    <script>
+        $('.box li').on('click', function () {
+            console.log(1)
+            var str = $(this).text()
+            $('#wrap').text(str)
+        })
+        //jquery事件的简写
+        $('.box li').click(function () {
+            console.log(2)
+            var str = $(this).text()
+            $('#wrap').text(str)
+        })
+        //下面是命名空间，就是等想要解绑事件的时候方便区分绑定事件，写法如下
+        $('.box li').on('click.name', function () {
+            console.log(3)
+            var str = $(this).text()
+            $('.wrap').text(str)
+        })
+        //下面是off解绑事件
+        $('.box li').off('click.name')
+        //下面是绑定input事件，但是新增的内容是没有绑定事件的
+        $('#btn').on('click', function () {
+            var value = $('#ipt').val()
+            $('.box ul').append('<li>' + value + '</li>')
+        })
+        //如果我们需要新增的内容有绑定事件，就要用到事件代理
+        $('.box ul').on('click', 'li', function () {
+            var str = $(this).text()
+            $('#wrap').text(str)
+        })
+    </script>
+</body>
+
+</html>
