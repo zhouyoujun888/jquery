@@ -6,12 +6,126 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+        </script>
+    <style>
+        .container {
+            position: relative;
+        }
+
+        .container .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid bisque;
+            border-radius: 50%;
+            background-color: bisque;
+            position: absolute;
+
+        }
+    </style>
     <title>Document</title>
+
 </head>
 
 <body>
+    <button id="btn1">start</button>
+    <button id="btn2">step+50</button>
+    <button id="btn3">step-50</button>
+    <button id="btnup">up</button>
+    <button id="btndown">down</button>
+    <button id="btn4">auto</button>
+    <button id="btn5">reset</button>
+    <button id="btn6">stop(false,false)</button>
+    <button id="btn7">stop(true,false)</button>
+    <button id="btn8">stop(true,true)</button>
+    <button id="btn9">finish</button>
+    <button id="btn10">SOS</button>
 
+
+    <div class="container">
+        <div class="box"></div>
+    </div>
+
+    <script>
+        $('#btn1').click(function () {
+            $('.box').animate({
+                left: '100px',
+                top: 50,
+                width: 50,
+                height: 50,
+                opacity: 0.5
+            }, 1000)
+        })
+        $('#btn2').click(function () {
+            $('.box').animate({
+                left: '+=50'
+            }, 1000)
+        })
+        $('#btn3').click(function () {
+            $('.box').animate({
+                left: '-=50'
+            }, 1000)
+        })
+        $('#btnup').click(function () {
+            $('.box').animate({
+                top: '-=50'
+            }, 1000)
+        })
+        $('#btndown').click(function () {
+            $('.box').animate({
+                top: '+=50'
+            }, 1000)
+        })
+
+        $('#btn4').click(function () {
+            $('.box').animate({
+                left: 300
+            }, 3000)
+                .animate({
+                    left: 300,
+                    top: 300
+                }, 3000)
+                .animate({
+                    left: 0,
+                    top: 300
+                }, 3000)
+                .animate({
+                    left: 0,
+                    top: 0
+                }, 3000)
+        })
+
+        $('#btn5').click(function () {
+            $('.box').animate({
+                left: 0,
+                top: 0
+            }, 1000)
+        })
+        $('#btn6').click(function () {
+            //停止当前动画 默认flase
+            $('.box').stop()
+        })
+        $('#btn7').click(function () {
+            //停止当前动画，并清除没有执行的动画队列
+            $('.box').stop(true, false)
+        })
+        $('#btn8').click(function () {
+            //停止当前动画，并清除没有执行的动画队列,并且当前动画展示最终状态
+            $('.box').stop(true, true)
+        })
+        $('#btn9').click(function () {
+            //停掉所有动画 ，清除动画队列，直接展示最后一针
+            $('.box').finish()
+        })
+        $('#btn10').click(function () {
+            $('.box').stop(true, true).animate({
+                left: 500,
+                top: 500
+            })
+        })
+
+    </script>
 </body>
+
 
 </html>
